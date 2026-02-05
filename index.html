@@ -62,4 +62,306 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        .rose-head
+        .rose-header {
+            font-size: 5em;
+            margin-bottom: 10px;
+            animation: roseBloom 3s infinite;
+        }
+
+        @keyframes roseBloom {
+            0%, 100% { transform: scale(1) rotate(-5deg); }
+            50% { transform: scale(1.15) rotate(5deg); }
+        }
+
+        h1 {
+            color: #c94d5c;
+            margin-bottom: 15px;
+            font-size: 2.8em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            color: #d4737e;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .question {
+            font-size: 1.6em;
+            color: #333;
+            margin: 30px 0;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            height: 80px;
+            position: relative;
+        }
+
+        button {
+            padding: 18px 45px;
+            font-size: 1.3em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-family: Georgia, serif;
+        }
+
+        #yesBtn {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c94d5c 100%);
+            color: white;
+            box-shadow: 0 8px 25px rgba(201, 77, 92, 0.3);
+            z-index: 1000;
+            position: relative;
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 12px 35px rgba(201, 77, 92, 0.5);
+        }
+
+        #noBtn {
+            background: #e8e8e8;
+            color: #999;
+            position: absolute;
+        }
+
+        .petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .petal {
+            position: absolute;
+            font-size: 30px;
+            animation: fall 6s ease-in forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .success-message {
+            animation: celebrateIn 1s ease-out;
+        }
+
+        @keyframes celebrateIn {
+            0% { transform: scale(0) rotate(-180deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .success-message h2 {
+            color: #c94d5c;
+            font-size: 3.5em;
+            margin: 20px 0;
+        }
+
+        .success-message p {
+            font-size: 1.4em;
+            color: #555;
+            line-height: 2;
+            margin: 15px 0;
+        }
+
+        .emoji-garden {
+            font-size: 5em;
+            animation: grow 2s infinite;
+            margin: 20px 0;
+        }
+
+        @keyframes grow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .happy-face {
+            font-size: 8em;
+            animation: happyBounce 1.5s infinite;
+            margin: 20px 0;
+        }
+
+        @keyframes happyBounce {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .bouquet {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            font-size: 3em;
+            margin: 20px 0;
+        }
+
+        .bouquet span {
+            display: inline-block;
+            animation: wave 1.5s ease-in-out infinite;
+        }
+
+        .bouquet span:nth-child(2) { animation-delay: 0.2s; }
+        .bouquet span:nth-child(3) { animation-delay: 0.4s; }
+        .bouquet span:nth-child(4) { animation-delay: 0.6s; }
+        .bouquet span:nth-child(5) { animation-delay: 0.8s; }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg) translateY(0); }
+            50% { transform: rotate(10deg) translateY(-10px); }
+        }
+
+        .love-note {
+            background: linear-gradient(135deg, #fff5f7, #ffe8ec);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border-left: 5px solid #ff6b9d;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-flowers">
+        <div class="flower" style="left: 10%; top: 20%;">🌸</div>
+        <div class="flower" style="left: 80%; top: 30%;">🌺</div>
+        <div class="flower" style="left: 15%; top: 70%;">🌼</div>
+        <div class="flower" style="left: 85%; top: 60%;">🌻</div>
+        <div class="flower" style="left: 45%; top: 15%;">🌷</div>
+        <div class="flower" style="left: 60%; top: 80%;">🏵️</div>
+    </div>
+
+    <div class="petals" id="petalsContainer"></div>
+    
+    <div class="container">
+        <div id="questionSection">
+            <div class="rose-header">🌹</div>
+            <h1>Liebe Hedyen</h1>
+            <div class="subtitle">Für die wunderbarste Person ✨</div>
+            
+            <div class="bouquet">
+                <span>🌹</span>
+                <span>🌺</span>
+                <span>🌸</span>
+                <span>🌷</span>
+                <span>💐</span>
+            </div>
+
+            <div class="question">
+                <p>Willst du mit mir zusammen sein?</p>
+            </div>
+
+            <div class="buttons">
+                <button id="yesBtn">Ja! 💕</button>
+                <button id="noBtn">Nein</button>
+            </div>
+        </div>
+
+        <div id="successSection" class="hidden">
+            <div class="emoji-garden">🎉✨💖✨🎉</div>
+            <div class="happy-face">😊</div>
+            <h2>Hedyen hat Ja gesagt!</h2>
+            
+            <div class="bouquet">
+                <span>🌹</span>
+                <span>🌹</span>
+                <span>🌹</span>
+                <span>🌹</span>
+                <span>🌹</span>
+            </div>
+
+            <p>Du hast mich zum glücklichsten Menschen auf der Welt gemacht! 🥰</p>
+            
+            <div class="love-note">
+                Wie eine Rose unter Blumen, so bist du in meinem Leben – etwas ganz Besonderes! 🌹
+            </div>
+
+            <p style="margin-top: 25px;">Ich freue mich so sehr auf unsere gemeinsame Zukunft! 💑</p>
+            
+            <div style="margin-top: 30px; font-size: 3em;">🌸💝🌸</div>
+        </div>
+    </div>
+
+    <script>
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            const flowers = ['🌹', '🌸', '🌺', '🌷', '💐', '🏵️', '💕', '❤️'];
+            petal.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+            petal.style.left = Math.random() * 100 + '%';
+            petal.style.fontSize = (Math.random() * 25 + 25) + 'px';
+            document.getElementById('petalsContainer').appendChild(petal);
+            
+            setTimeout(function() {
+                petal.remove();
+            }, 6000);
+        }
+
+        function sayYes() {
+            document.getElementById('questionSection').classList.add('hidden');
+            document.getElementById('successSection').classList.remove('hidden');
+            
+            for (let i = 0; i < 80; i++) {
+                setTimeout(function() {
+                    createPetal();
+                }, i * 80);
+            }
+            
+            document.body.style.background = 'linear-gradient(135deg, #ffeef0 0%, #ffc3ce 50%, #ff9aaf 100%)';
+        }
+
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const container = document.querySelector('.buttons');
+            
+            const maxX = 200;
+            const maxY = 50;
+            
+            const randomX = (Math.random() - 0.5) * maxX;
+            const randomY = (Math.random() - 0.5) * maxY;
+            
+            btn.style.transform = 'translate(' + randomX + 'px, ' + randomY + 'px)';
+            
+            const currentSize = parseFloat(window.getComputedStyle(btn).fontSize);
+            if (currentSize > 12) {
+                btn.style.fontSize = (currentSize * 0.85) + 'px';
+            }
+            
+            const yesBtn = document.getElementById('yesBtn');
+            const yesSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+            yesBtn.style.fontSize = (yesSize * 1.1) + 'px';
+        }
+
+        document.getElementById('yesBtn').onclick = sayYes;
+        document.getElementById('noBtn').onmouseenter = moveButton;
+        
+        for (let i = 0; i < 15; i++) {
+            setTimeout(function() {
+                createPetal();
+            }, i * 300);
+        }
+    </script>
+</body>
+</html>
