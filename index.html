@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eine wichtige Frage... ❤️</title>
+    <title>Für Hedyen 🌹</title>
     <style>
         * {
             margin: 0;
@@ -12,57 +12,109 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ff9a9e 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            position: relative;
+        }
+
+        /* Animierte Blumen im Hintergrund */
+        .floating-flowers {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .flower {
+            position: absolute;
+            animation: floatFlower 15s infinite ease-in-out;
+            opacity: 0.3;
+            font-size: 40px;
+        }
+
+        @keyframes floatFlower {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-30px) rotate(90deg);
+            }
+            50% {
+                transform: translateY(0) rotate(180deg);
+            }
+            75% {
+                transform: translateY(-30px) rotate(270deg);
+            }
         }
 
         .container {
             text-align: center;
-            background: white;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 500px;
-            animation: fadeIn 1s ease-in;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 30px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+            max-width: 550px;
+            animation: fadeIn 1.5s ease-in;
+            position: relative;
+            z-index: 10;
+            border: 3px solid rgba(255, 182, 193, 0.5);
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: scale(0.8);
+                transform: scale(0.8) translateY(50px);
             }
             to {
                 opacity: 1;
-                transform: scale(1);
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .rose-header {
+            font-size: 5em;
+            margin-bottom: 10px;
+            animation: roseBloom 3s infinite;
+        }
+
+        @keyframes roseBloom {
+            0%, 100% {
+                transform: scale(1) rotate(-5deg);
+            }
+            50% {
+                transform: scale(1.15) rotate(5deg);
             }
         }
 
         h1 {
-            color: #764ba2;
-            margin-bottom: 30px;
-            font-size: 2.5em;
-            animation: pulse 2s infinite;
+            color: #c94d5c;
+            margin-bottom: 15px;
+            font-size: 2.8em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: 'Brush Script MT', cursive;
         }
 
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
+        .subtitle {
+            color: #d4737e;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            font-style: italic;
         }
 
         .question {
-            font-size: 1.5em;
+            font-size: 1.6em;
             color: #333;
-            margin-bottom: 40px;
-            line-height: 1.6;
+            margin: 30px 0;
+            line-height: 1.8;
+            font-weight: 500;
         }
 
         .buttons {
@@ -70,39 +122,42 @@
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 40px;
         }
 
         button {
-            padding: 15px 40px;
-            font-size: 1.2em;
+            padding: 18px 45px;
+            font-size: 1.3em;
             border: none;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: bold;
+            font-family: 'Georgia', serif;
         }
 
         #yesBtn {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, #ff6b9d 0%, #c94d5c 100%);
             color: white;
+            box-shadow: 0 8px 25px rgba(201, 77, 92, 0.3);
         }
 
         #yesBtn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+            transform: scale(1.15) rotate(2deg);
+            box-shadow: 0 12px 35px rgba(201, 77, 92, 0.5);
         }
 
         #noBtn {
-            background: #e0e0e0;
-            color: #666;
+            background: #e8e8e8;
+            color: #999;
             position: relative;
         }
 
         #noBtn:hover {
-            background: #d0d0d0;
+            background: #d8d8d8;
         }
 
-        .hearts {
+        .petals {
             position: fixed;
             top: 0;
             left: 0;
@@ -112,33 +167,35 @@
             z-index: 1000;
         }
 
-        .heart {
+        .petal {
             position: absolute;
-            font-size: 30px;
-            animation: float 4s ease-in infinite;
+            animation: fall 6s ease-in infinite;
             opacity: 0;
         }
 
-        @keyframes float {
+        @keyframes fall {
             0% {
-                transform: translateY(100vh) rotate(0deg);
+                transform: translateY(-100px) rotate(0deg);
                 opacity: 1;
             }
             100% {
-                transform: translateY(-100px) rotate(360deg);
+                transform: translateY(100vh) rotate(720deg);
                 opacity: 0;
             }
         }
 
         .success-message {
             display: none;
-            animation: celebrateIn 0.8s ease-out;
+            animation: celebrateIn 1s ease-out;
         }
 
         @keyframes celebrateIn {
             0% {
                 transform: scale(0) rotate(-180deg);
                 opacity: 0;
+            }
+            60% {
+                transform: scale(1.1) rotate(10deg);
             }
             100% {
                 transform: scale(1) rotate(0deg);
@@ -147,41 +204,107 @@
         }
 
         .success-message h2 {
-            color: #f5576c;
-            font-size: 3em;
-            margin-bottom: 20px;
+            color: #c94d5c;
+            font-size: 3.5em;
+            margin: 20px 0;
+            font-family: 'Brush Script MT', cursive;
         }
 
         .success-message p {
-            font-size: 1.3em;
-            color: #666;
-            line-height: 1.8;
+            font-size: 1.4em;
+            color: #555;
+            line-height: 2;
+            margin: 15px 0;
         }
 
-        .emoji {
-            font-size: 4em;
-            animation: bounce 1s infinite;
+        .emoji-garden {
+            font-size: 5em;
+            animation: grow 2s infinite;
+            margin: 20px 0;
         }
 
-        @keyframes bounce {
+        @keyframes grow {
             0%, 100% {
-                transform: translateY(0);
+                transform: scale(1);
             }
             50% {
-                transform: translateY(-20px);
+                transform: scale(1.2);
             }
+        }
+
+        .bouquet {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            font-size: 3em;
+            margin: 20px 0;
+        }
+
+        .bouquet span {
+            display: inline-block;
+            animation: wave 1.5s ease-in-out infinite;
+        }
+
+        .bouquet span:nth-child(1) { animation-delay: 0s; }
+        .bouquet span:nth-child(2) { animation-delay: 0.2s; }
+        .bouquet span:nth-child(3) { animation-delay: 0.4s; }
+        .bouquet span:nth-child(4) { animation-delay: 0.6s; }
+        .bouquet span:nth-child(5) { animation-delay: 0.8s; }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: rotate(0deg) translateY(0);
+            }
+            25% {
+                transform: rotate(10deg) translateY(-10px);
+            }
+            75% {
+                transform: rotate(-10deg) translateY(-5px);
+            }
+        }
+
+        .love-note {
+            background: linear-gradient(135deg, #fff5f7, #ffe8ec);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 25px;
+            border-left: 5px solid #ff6b9d;
+            font-style: italic;
+            color: #666;
         }
     </style>
 </head>
 <body>
-    <div class="hearts" id="heartsContainer"></div>
+    <!-- Hintergrund Blumen -->
+    <div class="floating-flowers">
+        <div class="flower" style="left: 10%; top: 20%; animation-delay: 0s;">🌸</div>
+        <div class="flower" style="left: 80%; top: 30%; animation-delay: 2s;">🌺</div>
+        <div class="flower" style="left: 15%; top: 70%; animation-delay: 4s;">🌼</div>
+        <div class="flower" style="left: 85%; top: 60%; animation-delay: 6s;">🌻</div>
+        <div class="flower" style="left: 45%; top: 15%; animation-delay: 3s;">🌷</div>
+        <div class="flower" style="left: 60%; top: 80%; animation-delay: 5s;">🏵️</div>
+    </div>
+
+    <div class="petals" id="petalsContainer"></div>
     
     <div class="container">
         <div id="questionSection">
-            <h1>❤️ Eine wichtige Frage ❤️</h1>
+            <div class="rose-header">🌹</div>
+            <h1>Liebe Hedyen</h1>
+            <div class="subtitle">Für die wunderbarste Person ✨</div>
+            
+            <div class="bouquet">
+                <span>🌹</span>
+                <span>🌺</span>
+                <span>🌸</span>
+                <span>🌷</span>
+                <span>💐</span>
+            </div>
+
             <div class="question">
                 <p>Willst du mit mir zusammen sein?</p>
             </div>
+
             <div class="buttons">
                 <button id="yesBtn" onclick="sayYes()">Ja! 💕</button>
                 <button id="noBtn" onclick="moveButton()">Nein</button>
@@ -189,10 +312,26 @@
         </div>
 
         <div id="successSection" class="success-message">
-            <div class="emoji">🎉💖✨</div>
-            <h2>Yaaay! 🥰</h2>
-            <p>Du hast mich zum glücklichsten Menschen gemacht! ❤️</p>
-            <p style="margin-top: 20px;">Ich freue mich so sehr auf unsere gemeinsame Zeit! 💑</p>
+            <div class="emoji-garden">🎉✨💖✨🎉</div>
+            <h2>Hedyen hat Ja gesagt!</h2>
+            
+            <div class="bouquet">
+                <span>🌹</span>
+                <span>🌹</span>
+                <span>🌹</span>
+                <span>🌹</span>
+                <span>🌹</span>
+            </div>
+
+            <p>Du hast mich zum glücklichsten Menschen auf der Welt gemacht! 🥰</p>
+            
+            <div class="love-note">
+                "Wie eine Rose unter Blumen, so bist du in meinem Leben – etwas ganz Besonderes! 🌹"
+            </div>
+
+            <p style="margin-top: 25px;">Ich freue mich so sehr auf unsere gemeinsame Zukunft!🍀</p>
+            
+            <div style="margin-top: 30px; font-size: 3em;">🌸💝🌸</div>
         </div>
     </div>
 
@@ -201,32 +340,34 @@
             document.getElementById('questionSection').style.display = 'none';
             document.getElementById('successSection').style.display = 'block';
             
-            // Herzen fliegen lassen
-            for (let i = 0; i < 50; i++) {
-                setTimeout(() => createHeart(), i * 100);
+            // Rosenblätter fallen lassen
+            for (let i = 0; i < 80; i++) {
+                setTimeout(() => createPetal(), i * 80);
             }
             
-            // Konfetti-Effekt
-            document.body.style.background = 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)';
+            // Hintergrund ändert sich
+            document.body.style.background = 'linear-gradient(135deg, #ffeef0 0%, #ffc3ce 50%, #ff9aaf 100%)';
         }
 
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.innerHTML = ['❤️', '💕', '💖', '💗', '💝'][Math.floor(Math.random() * 5)];
-            heart.style.left = Math.random() * 100 + '%';
-            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
-            document.getElementById('heartsContainer').appendChild(heart);
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            const flowers = ['🌹', '🌸', '🌺', '🌷', '💐', '🏵️', '💕'];
+            petal.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+            petal.style.left = Math.random() * 100 + '%';
+            petal.style.animationDuration = (Math.random() * 4 + 3) + 's';
+            petal.style.animationDelay = Math.random() * 2 + 's';
+            petal.style.fontSize = (Math.random() * 25 + 25) + 'px';
+            document.getElementById('petalsContainer').appendChild(petal);
             
-            setTimeout(() => heart.remove(), 4000);
+            setTimeout(() => petal.remove(), 8000);
         }
 
         function moveButton() {
             const btn = document.getElementById('noBtn');
             const container = document.querySelector('.container');
             
-            // Button bewegt sich zufällig
+            // Button bewegt sich weg
             const maxX = container.offsetWidth - btn.offsetWidth - 100;
             const maxY = container.offsetHeight - btn.offsetHeight - 100;
             
@@ -237,16 +378,24 @@
             btn.style.left = randomX + 'px';
             btn.style.top = randomY + 'px';
             
-            // Button wird kleiner bei jedem Versuch
+            // Button wird kleiner
             const currentSize = parseFloat(window.getComputedStyle(btn).fontSize);
-            btn.style.fontSize = (currentSize * 0.9) + 'px';
-            btn.style.padding = '10px 30px';
+            btn.style.fontSize = Math.max(currentSize * 0.85, 10) + 'px';
+            btn.style.padding = '12px 25px';
             
-            // Ja-Button wird größer
+            // Ja-Button wird größer und attraktiver
             const yesBtn = document.getElementById('yesBtn');
             const yesSize = parseFloat(window.getComputedStyle(yesBtn).fontSize);
-            yesBtn.style.fontSize = (yesSize * 1.1) + 'px';
+            yesBtn.style.fontSize = (yesSize * 1.12) + 'px';
+            yesBtn.style.transform = 'scale(' + (1 + Math.random() * 0.1) + ')';
         }
+
+        // Einige Blütenblätter fallen beim Laden
+        window.addEventListener('load', () => {
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => createPetal(), i * 300);
+            }
+        });
     </script>
 </body>
 </html>
